@@ -2,6 +2,6 @@
 class role::iib()
 {
   contain profile::base
-  contain iib_install::installiib
-  contain profile::iib::example
+  contain profile::iib::version10_fixpack_7
+  contain profile::iib::version10_fixpack_8
 }
