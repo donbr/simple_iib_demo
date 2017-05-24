@@ -14,6 +14,18 @@ All nodes are available to test with Puppet masterless. To do so, add `ml-` for 
 $ vagrant up ml-iib01
 ```
 
+## Building with Docker
+
+```
+docker build -t "ibm-iib" docker
+```
+
+## Running docker
+
+```
+docker run -i -t --entrypoint /bin/bash ibm-iib
+```
+
 ## Staring the nodes with PE
 
 You can also test with a Puppet Enterprise server. To do so, add `pe-` for the name when using vagrant:
