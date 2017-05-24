@@ -39,5 +39,17 @@ RUN chmod 700 ~/.ssh
 RUN ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
 # Install required puppet modules
-# RUN cd /vagrant; . /opt/puppetlabs/puppet/bin/librarian-puppet install
+RUN cd /vagrant; /opt/puppetlabs/puppet/bin/librarian-puppet install
 
+# Remove default puppet files
+RUN rm -f /etc/puppetlabs/puppet/hiera.yaml /etc/puppetlabs/hiera.yaml /etc/puppetlabs/code/hiera.yaml
+RUN rm -rf /etc/puppetlabs/code/environments/production/modules
+RUN rm -rf /etc/puppetlabs/code/environments/production/manifests
+
+# Create symlinks to setupfiles
+RUN ln -sf /vagrant/hiera.yaml /etc/puppetlabs/code/environments/production/hiera.yaml
+RUN ln -sf /vagrant/modules /etc/puppetlabs/code/environments/production
+RUN ln -sf /vagrant/manifests /etc/puppetlabs/code/environments/production
+
+# Apply ibm manifest
+RUN /opt/puppetlabs/puppet/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp  --verbose --trace

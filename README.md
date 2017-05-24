@@ -25,11 +25,7 @@ docker build -t "ibm-iib" .
 ## Running docker
 
 ```
-docker run -v `pwd`:/vagrant -i -t --entrypoint /bin/bash ibm-iib
-```
-
-```
-docker run -v `pwd`:/vagrant -i -t --entrypoint /bin/bash ibm-iib
+docker run -i -t --entrypoint /bin/bash ibm-iib
 ```
 
 ## Staring the nodes with PE
