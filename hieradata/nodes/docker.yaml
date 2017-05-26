@@ -1,4 +1,4 @@
-deployment_zone: vagrant
+deployment_zone: docker
 
 role: role::iib
 
