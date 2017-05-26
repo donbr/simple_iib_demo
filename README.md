@@ -16,10 +16,11 @@ $ vagrant up ml-iib01
 
 ## Building with Docker
 
-To build docker image execute command below form root of this project.
+To build docker image first enable experimental features and then execute
+command below from root of this project.
 
 ```
-docker build -t "ibm-iib" .
+docker build -t "ibm-iib" . --squash
 ```
 
 ## Running docker
